@@ -1,0 +1,12 @@
+{
+    "name": "Slack Toggle Sidebar",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "short_name": "slack-toggle-sidebar",
+    "description": "Toggle show or hide Slack's channel sidebar",
+    "icons": { "128": "icon/128.png" },
+    "content_scripts": [{
+        "matches": ["https://*.slack.com/*"],
+        "js": ["js/app.min.js"]
+    }]
+}
