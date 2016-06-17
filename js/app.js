@@ -22,4 +22,7 @@
     document.head.appendChild(n);
     var t = document.createElement("script");
     t.type = "text/javascript", t.innerHTML = "(" + e + ")();", document.body.appendChild(t);
+
+    //min-width is 768px by default - this makes it so messages continue to fit on the screen as you make it smaller
+    document.body.style.minWidth = '150px';
 }();
