@@ -18,7 +18,7 @@
         }
     }
     var n = document.createElement("style");
-    n.innerHTML = ".channel_header_refresh #client_body:not(.onboarding):before { left: 0 }",
+    n.innerHTML = "div#client_body:not(.onboarding):before { left: 0 }",
     document.head.appendChild(n);
     var t = document.createElement("script");
     t.type = "text/javascript", t.innerHTML = "(" + e + ")();", document.body.appendChild(t);
