@@ -1,28 +1,40 @@
-!function() {
-    function e() {
-        function e(e) {
-            var n = e ? "block" : "none", t = e ? "220px" : 0;
-            $("#col_channels_bg, #col_channels").css("display", n), $("#messages_container").css("margin-left", t),
-            $(".channel_header").css("margin-left", t), $("#team_menu").css("display", n), $("#footer").css("left", t),
-            $(window).trigger("resize");
-        }
-        var n = "sidebar_visible";
-        $(window).on("keypress", function(a) {
-            a.metaKey && 98 == a.charCode && (t = "true" == window.localStorage.getItem(n),
-            e(!t), window.localStorage.setItem(n, !t));
-        });
-        var t = window.localStorage.getItem(n);
-        if ("false" == t) {
-            var a = $("div#loading-zone");
-            a.css("left", 0), a.css("padding-left", "220px"), e(!1);
-        }
-    }
-    var n = document.createElement("style");
-    n.innerHTML = "div#client_body:not(.onboarding):before { left: 0 }",
-    document.head.appendChild(n);
-    var t = document.createElement("script");
-    t.type = "text/javascript", t.innerHTML = "(" + e + ")();", document.body.appendChild(t);
+(function () {
+    function toggleSlackSidebar() {
+        var key = '__toggle_sidebar';
 
-    //min-width is 768px by default - this makes it so messages continue to fit on the screen as you make it smaller
-    document.body.style.minWidth = '150px';
-}();
+        function isHidden() {
+            var status = window.localStorage.getItem(key);
+
+            //noinspection EqualityComparisonWithCoercionJS
+            return status == "1"
+        }
+
+        function reloadPageLayout() {
+            var sidebar = document.getElementsByClassName('client_channels_list_container')[0];
+            if (sidebar === undefined) return;
+
+            sidebar.style.display = isHidden() ? 'none' : 'block';
+        }
+
+        function showOrHideSidebar() {
+            window.localStorage.setItem(key, isHidden() ? 0 : 1);
+            reloadPageLayout();
+        }
+
+        function keyDownEventHandler(e) {
+            var isMac = navigator.platform.indexOf('Mac');
+            if (e.keyCode === 83 && (isMac < 0 ? e.ctrlKey : e.metaKey)) {
+                e.preventDefault();
+                showOrHideSidebar();
+            }
+        }
+
+        document.addEventListener("keydown", keyDownEventHandler, false);
+        reloadPageLayout();
+    }
+
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.innerHTML = '(' + toggleSlackSidebar.toString() + ')();';
+    document.body.appendChild(script);
+})();
