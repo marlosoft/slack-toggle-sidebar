@@ -13,7 +13,7 @@
             var sidebar = document.getElementsByClassName('client_channels_list_container')[0];
             if (sidebar === undefined) return;
 
-            sidebar.style.display = isHidden() ? 'none' : 'block';
+            sidebar.style.display = isHidden() ? 'none' : 'flex';
         }
 
         function showOrHideSidebar() {
