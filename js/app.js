@@ -35,7 +35,7 @@
 
     var style = document.createElement('style');
     style.type = 'text/css';
-    style.innerText = `.client_channels_list_container { display: auto; transition: margin 250ms cubic-bezier(.2,.8,.5,1),top 0s linear 0s,left 250ms ease-in-out; }`;
+    style.innerText = '.client_channels_list_container { display: auto; transition: margin 250ms cubic-bezier(.2,.8,.5,1),top 0s linear 0s,left 250ms ease-in-out; }';
     document.body.appendChild(style);
 
     var script = document.createElement('script');
