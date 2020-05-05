@@ -1,0 +1,14 @@
+.p-workspace {
+    margin-left: 0;
+    transition: margin 250ms cubic-bezier(.2, .8, .5, 1), top 0s linear 0s, left 250ms ease-in-out;
+}
+
+.p-workspace.no-sidebar {
+    margin-left: -260px;
+}
+
+@media screen and (max-width: 1070px) {
+    .p-workspace.no-sidebar {
+        margin-left: -220px;
+    }
+}
