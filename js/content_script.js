@@ -16,7 +16,7 @@ const Sidebar = {
     return window.localStorage.getItem(Sidebar.KEY) === '1';
   },
   apply: () => {
-    const workspace = document.querySelector('.p-workspace');
+    const workspace = document.querySelector('.p-workspace-layout');
     if (workspace) {
       const classList = workspace.classList;
       Sidebar.isHidden() ? classList.add('no-sidebar') : classList.remove('no-sidebar');
